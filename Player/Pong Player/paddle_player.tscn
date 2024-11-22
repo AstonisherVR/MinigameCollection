@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfi6nqk7qlc62"]
+
+[ext_resource type="Script" path="res://Player/Pong Player/paddle_player.gd" id="1_gb63c"]
+
+[sub_resource type="Curve" id="Curve_nxx3u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_mywp1"]
+curve = SubResource("Curve_nxx3u")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj8pc"]
+size = Vector2(32, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ye63"]
+size = Vector2(1920, 1080)
+
+[node name="Paddle Player" type="CharacterBody2D" groups=["Paddles"]]
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_gb63c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-07, -1.14441e-05)
+scale = Vector2(0.125, 160)
+texture = SubResource("CurveTexture_mywp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uj8pc")
+
+[node name="BotDetectionArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+top_level = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BotDetectionArea2D"]
+shape = SubResource("RectangleShape2D_0ye63")
+disabled = true

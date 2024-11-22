@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://drp62l7v3dakm"]
+
+[ext_resource type="PackedScene" uid="uid://b3fuaacfojm8j" path="res://Pong Ball/ball.tscn" id="1_n8l8b"]
+[ext_resource type="PackedScene" uid="uid://cfi6nqk7qlc62" path="res://Player/Pong Player/paddle_player.tscn" id="2_tlct6"]
+[ext_resource type="PackedScene" uid="uid://cjmum46ypjh4k" path="res://Wall/wall.tscn" id="3_omv8n"]
+[ext_resource type="PackedScene" uid="uid://c284njk6nhn1i" path="res://UI, GUI, HUD/ui.tscn" id="9_mjog0"]
+
+[node name="Playground" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05726, 0.0406, 0.07, 0.976471)
+
+[node name="Paddle Player 1" parent="." instance=ExtResource("2_tlct6")]
+position = Vector2(25, 549)
+
+[node name="Paddle Player 2" parent="." instance=ExtResource("2_tlct6")]
+position = Vector2(1896, 550)
+move_speed = 900.0
+
+[node name="Wall 1" parent="." instance=ExtResource("3_omv8n")]
+position = Vector2(1010, -3)
+
+[node name="Wall 2" parent="." instance=ExtResource("3_omv8n")]
+position = Vector2(1021, 1095)
+
+[node name="Ball" parent="." instance=ExtResource("1_n8l8b")]
+position = Vector2(958, 546)
+
+[node name="UI" parent="." instance=ExtResource("9_mjog0")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0vtkxffto4eg"]
+
+[ext_resource type="Script" path="res://Pong Ball/ball_spawner.gd" id="1_bj3s5"]
+
+[node name="Ball Spawner" type="Node"]
+script = ExtResource("1_bj3s5")

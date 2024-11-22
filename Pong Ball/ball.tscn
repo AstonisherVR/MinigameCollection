@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3fuaacfojm8j"]
+
+[ext_resource type="Script" path="res://Pong Ball/ball.gd" id="1_4f4vg"]
+[ext_resource type="PackedScene" uid="uid://cugxiuix8hym7" path="res://Pong Ball/ball_trail.tscn" id="2_lg0it"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_avako"]
+
+[node name="Ball" type="CharacterBody2D" groups=["Pong Ball"]]
+modulate = Color(0.94, 0.0752, 0.0752, 1)
+collision_layer = 2
+collision_mask = 13
+motion_mode = 1
+script = ExtResource("1_4f4vg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_avako")
+
+[node name="Ball Circle" type="Line2D" parent="."]
+scale = Vector2(1.85, 1.85)
+points = PackedVector2Array(-0.266667, -0.266667, -0.266667, 0.266667, 0.266667, 0.266667, -0.266667, -0.266667, 0.266667, -0.266667, 0.266667, 0.266667)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 4
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-20, -20, 40, 40)
+
+[node name="Ball Trail" parent="." instance=ExtResource("2_lg0it")]
+width = 16.0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

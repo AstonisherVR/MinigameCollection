@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chl4fw0avwcqs"]
+
+[ext_resource type="Script" path="res://Player/Pong Player/paddle_players_spawner.gd" id="1_3i42i"]
+
+[node name="Paddle Players Spawner" type="Node"]
+script = ExtResource("1_3i42i")
