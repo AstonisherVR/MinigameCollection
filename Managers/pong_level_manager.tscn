@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://omgb3ew872e6"]
+
+[ext_resource type="Script" path="res://Managers/pong_level_manager.gd" id="1_uomar"]
+
+[node name="Pong Level Manager" type="Node"]
+script = ExtResource("1_uomar")

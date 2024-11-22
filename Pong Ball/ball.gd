@@ -23,6 +23,7 @@ signal ball_scored
 const MAX_Y_VECTOR := 0.6
 
 func _physics_process(delta: float) -> void:
+	#print(current_speed)
 	_ball_movement(delta)
 
 # Moves the ball and handles bouncing off paddles and walls
