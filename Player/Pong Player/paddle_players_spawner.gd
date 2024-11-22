@@ -16,7 +16,7 @@ func _spawn_players() -> void:
 		
 		# Configurations for the new paddle's peoperties
 		new_paddle_player.is_player_2 = (i == 1) # Set the Player 2 flag
-		new_paddle_player.is_bot = (i == 0)  # Second player is bot
+		new_paddle_player.is_bot = (i == 1)  # Second player is bot
 		new_paddle_player.name = "Paddle_Player_%d" % (i + 1)
 		
 		# Position paddle: Player 1 on left, Player 2 on right
