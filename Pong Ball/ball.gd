@@ -68,7 +68,7 @@ func _random_start_direction() -> Vector2:
 	new_direction.y = randf_range(-MAX_Y_VECTOR, MAX_Y_VECTOR)
 	return new_direction.normalized()
 
-func _scored_ball() -> void:
+func _score_ball() -> void:
 	# Check which player scored based on ball direction
 	if direction.x > 0: ball_scored.emit("player_1_scored")
 	else: ball_scored.emit("player_2_scored")
@@ -80,10 +80,10 @@ func _scored_ball() -> void:
 	#current_speed = initial_speed
 	#direction = random_start_direction()
 
-# Makes the ball gradually fade out (Just in case I want to add powers to the players)
+# Makes the ball gradually fade out (Just in case I want to add powers for the players)
 func _make_invisible() -> void:
 	modulate = modulate * 0.96
 
 # Called when ball goes off screen - triggers scoring
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	_scored_ball()
+	_score_ball()

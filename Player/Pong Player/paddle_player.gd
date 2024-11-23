@@ -21,7 +21,10 @@ var _input_actions: Dictionary = {
 	"player2_down": "ui_down"
 }
 
+# TODO In start menu let player choose wheter to play sgainst another player or player bot
+
 func _ready() -> void:
+
 	# Enable/disable ball detection based on if it's a bot
 	bot_area_collision.set_deferred("disabled", !is_bot)
 	if is_bot: is_player_2 = true
@@ -53,7 +56,7 @@ func _get_movement_direction() -> float:
 func _get_player_direction() -> float:
 	var up_action = _input_actions["player2_up" if is_player_2 else "up"]
 	var down_action = _input_actions["player2_down" if is_player_2 else "down"]
-	return Input.get_axis(up_action, down_action)
+	return Input.get_axis(up_action, down_action) # TODO Understand what is going on
 
 ## Calculates bot movement based on ball position. Returns Bot movement direction
 func _get_bot_direction() -> float:
@@ -64,4 +67,4 @@ func _get_bot_direction() -> float:
 
 ## Gets current ball position. If no ball is detected, return current paddle position to stay in place
 func _get_ball_position() -> Vector2:
-	return _current_ball.position if _current_ball else position
+	return _current_ball.position if _current_ball != null else position

@@ -10,10 +10,16 @@
 
 [node name="Ball Spawner" parent="." instance=ExtResource("1_6sxal")]
 unique_name_in_owner = true
+initial_speed = 1000.0
+max_speed = 4800.0
+acceleration_speed = 500.0
+spawn_delay = 0.1
 
 [node name="Wall Spawner" parent="." instance=ExtResource("2_lvjpm")]
 
 [node name="Player Spawner" parent="." instance=ExtResource("3_54x8b")]
+player_1_is_bot = true
+player_2_is_bot = true
 
 [node name="Pong Level Manager" parent="." instance=ExtResource("4_k65th")]
 

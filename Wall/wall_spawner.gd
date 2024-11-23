@@ -4,10 +4,12 @@ class_name WalllSpawner
 # Preload the wall scene
 const WALL_SCENE := preload("res://Wall/wall.tscn")
 
-# This spawns the walls
+# The walls get spawned at the start
 func _ready() -> void:
+	print("WalllSpawner initialized.")
 	_spawn_walls()
 
+# This spawns the walls
 func _spawn_walls() -> void:
 	for i in range(2):
 		var new_wall = WALL_SCENE.instantiate()

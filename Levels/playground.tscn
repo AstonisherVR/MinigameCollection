@@ -1,36 +1,33 @@
 [gd_scene load_steps=5 format=3 uid="uid://drp62l7v3dakm"]
 
-[ext_resource type="PackedScene" uid="uid://cfi6nqk7qlc62" path="res://Player/Pong Player/paddle_player.tscn" id="1_08nxg"]
-[ext_resource type="PackedScene" uid="uid://b3fuaacfojm8j" path="res://Pong Ball/ball.tscn" id="2_b42ab"]
-[ext_resource type="Script" path="res://Wall/wall_spawner.gd" id="3_rlx5a"]
+[ext_resource type="PackedScene" uid="uid://cb66e5npa4wxc" path="res://Pong Ball/debug_ball.tscn" id="1_laqx7"]
+[ext_resource type="PackedScene" uid="uid://chl4fw0avwcqs" path="res://Player/Pong Player/paddle_players_spawner.tscn" id="2_ua3te"]
+[ext_resource type="PackedScene" uid="uid://0ke7rqb1wal8" path="res://Wall/wall_spawner.tscn" id="4_mqbs0"]
 [ext_resource type="PackedScene" uid="uid://c284njk6nhn1i" path="res://UI, GUI, HUD/ui.tscn" id="9_mjog0"]
 
 [node name="Playground" type="Node2D"]
+metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Debug Ball" parent="." instance=ExtResource("1_laqx7")]
+position = Vector2(24, 16)
+initial_speed = 16.175
+max_speed = 40.055
+acceleration_speed = 22.355
+
+[node name="Paddle Players Spawner" parent="." instance=ExtResource("2_ua3te")]
+player_2_is_bot = true
+
+[node name="Wall Spawner" parent="." instance=ExtResource("4_mqbs0")]
+
+[node name="UI" parent="." instance=ExtResource("9_mjog0")]
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+z_index = -1
 custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.05726, 0.0406, 0.07, 0.976471)
-
-[node name="Paddle Player" parent="." instance=ExtResource("1_08nxg")]
-position = Vector2(50, 552)
-
-[node name="Paddle Player2" parent="." instance=ExtResource("1_08nxg")]
-position = Vector2(1863, 568)
-
-[node name="Ball" parent="." instance=ExtResource("2_b42ab")]
-position = Vector2(962, 542)
-initial_speed = 750.0
-max_speed = 3200.0
-acceleration_speed = 300.0
-
-[node name="WalllSpawner" type="Node" parent="."]
-script = ExtResource("3_rlx5a")
-
-[node name="UI" parent="." instance=ExtResource("9_mjog0")]
+metadata/_edit_lock_ = true

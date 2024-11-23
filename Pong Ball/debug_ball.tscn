@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb66e5npa4wxc"]
+
+[ext_resource type="PackedScene" uid="uid://b3fuaacfojm8j" path="res://Pong Ball/ball.tscn" id="1_6mfah"]
+[ext_resource type="Script" path="res://Pong Ball/debug_ball.gd" id="2_a7y8o"]
+
+[node name="Debug Ball" instance=ExtResource("1_6mfah")]
+modulate = Color(0.114316, 0.474827, 1, 1)
+script = ExtResource("2_a7y8o")
+
+[node name="Ball Trail" parent="." index="3"]
+length = 100
