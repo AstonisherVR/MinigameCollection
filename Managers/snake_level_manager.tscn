@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwfi46w70c7ky"]
+
+[ext_resource type="Script" path="res://Managers/snake_level_manager.gd" id="1_24qn6"]
+
+[node name="Snake Level Manager" type="Node"]
+script = ExtResource("1_24qn6")

@@ -2,7 +2,7 @@ extends CharacterBody2D
 ## The Player and Bot Logic will be here
 class_name Paddle
 
-@export_category("Paddle Configuration")
+@export_category("Paddle Parameters")
 @export var move_speed := 500.0				# How fast the paddle moves
 @export var is_player_2 := false			# If true, uses Player 2 controls
 @export var is_bot := false					# If true, paddle is AI controlled (And automatically Player 2)
@@ -14,7 +14,7 @@ class_name Paddle
 var _current_ball: Ball						# Variable to store the current ball for the bot to track
 
 # Dictionary to store input mappings for both players
-var _input_actions: Dictionary = {
+var POSSIBLE_INPUTS: Dictionary = {
 	"up": "up",
 	"down": "down",
 	"player2_up": "ui_up",
@@ -31,7 +31,7 @@ func _ready() -> void:
 	# Puts the bot_detection_area in the center
 	bot_detection_area.global_position = GlobalManager.screen_size/2
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_update_movement()
 	move_and_slide()
 
@@ -54,9 +54,9 @@ func _get_movement_direction() -> float:
 
 ## Handles player input for movement
 func _get_player_direction() -> float:
-	var up_action = _input_actions["player2_up" if is_player_2 else "up"]
-	var down_action = _input_actions["player2_down" if is_player_2 else "down"]
-	return Input.get_axis(up_action, down_action) # TODO Understand what is going on
+	var up_action = POSSIBLE_INPUTS["player2_up" if is_player_2 else "up"]
+	var down_action = POSSIBLE_INPUTS["player2_down" if is_player_2 else "down"]
+	return Input.get_axis(up_action, down_action)
 
 ## Calculates bot movement based on ball position. Returns Bot movement direction
 func _get_bot_direction() -> float:

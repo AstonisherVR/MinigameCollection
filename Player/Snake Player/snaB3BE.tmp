@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://cikkv5351d0cu"]
+
+[ext_resource type="Script" path="res://Player/Snake Player/snake_player.gd" id="1_jnscj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl4al"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_mu2at"]
+_data = [Vector2(0, 0), 0.0, 3.72514, 0, 0, Vector2(0.498182, 0.503536), 0.0, 0.0, 0, 0, Vector2(0.985455, 0), -3.7393, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_4gchs"]
+bake_resolution = 10
+_data = [Vector2(0, 0.24611), 0.0, 2.7436, 0, 0, Vector2(0.508711, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24611), -2.75251, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_e3xep"]
+width = 64
+curve_x = SubResource("Curve_mu2at")
+curve_y = SubResource("Curve_4gchs")
+
+[sub_resource type="Curve" id="Curve_1g11x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ayinu"]
+width = 32
+curve_x = SubResource("Curve_1g11x")
+
+[sub_resource type="Gradient" id="Gradient_fo18w"]
+offsets = PackedFloat32Array(0, 0.50193, 0.548263, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.943662, 0.943662, 0.943662, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wkkxr"]
+gradient = SubResource("Gradient_fo18w")
+width = 64
+
+[sub_resource type="Gradient" id="Gradient_cmpes"]
+offsets = PackedFloat32Array(0, 0.494208, 0.571429, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.945946, 0.945946, 0.945946, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w07ve"]
+gradient = SubResource("Gradient_cmpes")
+width = 64
+
+[node name="Snake Player" type="Area2D"]
+script = ExtResource("1_jnscj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dl4al")
+
+[node name="Head" type="Sprite2D" parent="."]
+scale = Vector2(1, 64)
+texture = SubResource("CurveXYZTexture_e3xep")
+
+[node name="Tonge" type="Sprite2D" parent="Head"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("CurveXYZTexture_ayinu")
+
+[node name="Eye 1" type="Sprite2D" parent="Head"]
+position = Vector2(-16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_wkkxr")
+
+[node name="Eye 2" type="Sprite2D" parent="Head"]
+position = Vector2(16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_w07ve")
