@@ -2,14 +2,22 @@ extends Node
 ## Manages the Snake level logic.
 class_name SnakeLevelManager
 
-signal level_is_snake
-
 @onready var ui: UI = %UI
+@onready var snake_fruit_spawner: SnakeFruitSpawner = %"Snake Fruit Spawner"
+@onready var snake_player: SnakePlayer = %"Snake Player"
 
-# The current scores for Player 1 & Player 2
-var players_scores := {1: 0, 2: 0}
+#@onready var snake_grid: TileMapLayer = %"Snake Grid"
+#@onready var grid_size = snake_grid.tile_set.tile_size
+
+var fruits_eaten := 0
+var game_stared: bool
 
 func _ready() -> void:
-	print("SnakeLevelManager initialized.")
-	#level_is_snake.connect(ui._on_snake_level_started)
-	level_is_snake.emit()
+	#print("SnakeLevelManager initialized.")
+	if snake_fruit_spawner: snake_fruit_spawner.fruit_eaten.connect(_update_fruit_score)
+
+# Updates the score when a point is scored
+func _update_fruit_score() -> void:
+	fruits_eaten += 1
+	if ui: ui.update_snake_points(fruits_eaten)
+	snake_player.add_body_segment()

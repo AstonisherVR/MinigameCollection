@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5h0u1j8tnolp"]
+
+[ext_resource type="PackedScene" uid="uid://doc3it1bv2hgt" path="res://Snake Fruit/base_fruit.tscn" id="1_ttaw2"]
+[ext_resource type="Script" path="res://Snake Fruit/apple_fruit.gd" id="2_dfupd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bitv"]
+resource_local_to_scene = true
+size = Vector2(64, 64)
+
+[node name="Apple Fruit" instance=ExtResource("1_ttaw2")]
+script = ExtResource("2_dfupd")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_3bitv")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.56, 0, 0.00933319, 1)

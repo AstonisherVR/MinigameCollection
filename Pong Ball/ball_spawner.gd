@@ -15,13 +15,13 @@ const BALL_SCENE := preload("res://Pong Ball/ball.tscn")
 # How much faster the ball gets each time it hits a paddle
 @export var acceleration_speed := 150.0
 # The delay in which the ball spawns after a player scores
-@export var spawn_delay := 1.0
+@export var spawn_delay := 0.1
 # Quick access to the screens' center for the ball to spawn at
 @onready var _screen_center: Vector2 = GlobalManager.screen_size / 2
 
 # This spawns the first ball, for now.
 func _ready() -> void:
-	print("BallSpawner initialized.")
+	#print("BallSpawner initialized.")
 	_spawn_ball()
 
 # This code spawns a ball

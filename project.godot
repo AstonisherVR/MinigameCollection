@@ -101,9 +101,15 @@ five={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
+2d_physics/layer_1="Paddle"
 2d_physics/layer_2="Ball"
 2d_physics/layer_3="Wall"
+2d_physics/layer_4="Snake"
+2d_physics/layer_5="Fruit"
+2d_physics/layer_6="Bird"
+2d_physics/layer_7="Pipes"
+2d_physics/layer_8="Spaceship"
+2d_physics/layer_9="Aliens"
 
 [physics]
 

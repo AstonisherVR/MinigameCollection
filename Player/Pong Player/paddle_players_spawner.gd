@@ -16,7 +16,7 @@ const PLAYER_MARGIN := 15 # Distance from screen edges
 
 # The players get spawned at the start
 func _ready() -> void:
-	print("PlayerSpawner initialized.")
+	#print("PlayerSpawner initialized.")
 	_spawn_players()
 
 # This is the two paddle players spawning logic

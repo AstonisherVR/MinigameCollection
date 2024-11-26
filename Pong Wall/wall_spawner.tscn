@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0ke7rqb1wal8"]
 
-[ext_resource type="Script" path="res://Wall/wall_spawner.gd" id="1_fntt5"]
+[ext_resource type="Script" path="res://Pong Wall/wall_spawner.gd" id="1_fntt5"]
 
 [node name="Wall Spawner" type="Node"]
 script = ExtResource("1_fntt5")

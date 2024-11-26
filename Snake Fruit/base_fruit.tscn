@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://doc3it1bv2hgt"]
+
+[ext_resource type="Script" path="res://Snake Fruit/base_fruit.gd" id="1_pxts1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bicl5"]
+size = Vector2(64, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1fyah"]
+size = Vector2(64, 64)
+
+[node name="Base Fruit" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_pxts1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bicl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.916667, 0.588235)
+texture = SubResource("PlaceholderTexture2D_1fyah")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

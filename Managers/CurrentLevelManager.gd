@@ -29,24 +29,25 @@ var level_scenes: Dictionary = {
 
 ## This should be called when the level needs to be changed
 func change_current_level_to(new_level: Levels) -> void:
+	# Early returns for invalid cases
 	if current_level == new_level: return
-	# Store the old level for cleanup
 	var level_scene = level_scenes[new_level]
 	if !level_scene: return
-	if level_scene:
-		# Instance new scene before freeing old one
-		var new_level_instance = level_scene.instantiate()
-		get_tree().root.add_child(new_level_instance)
-
-		# Cleanup old scene and notify
-		get_tree().current_scene.queue_free()
-		level_changed.emit(Levels.keys()[current_level])
-
-		# Update current level and scene
-		current_level = new_level
-		get_tree().current_scene = new_level_instance
-
-	print("Level changed to: ", Levels.keys()[current_level])
+	# Instance new scene
+	var new_level_instance = level_scene.instantiate()
+	# Get the current scene for cleanup
+	var previous_scene = get_tree().current_scene
+	# Add new scene to tree
+	get_tree().root.add_child(new_level_instance)
+	# Set as current scene BEFORE removing old scene
+	print_rich("[color=green][b]Level changed to:[/b][/color] ", new_level_instance.name)
+	get_tree().current_scene = new_level_instance
+	# Remove old scene if it exists
+	if previous_scene: previous_scene.queue_free()
+	# Update state and emit signal
+	current_level = new_level
+	level_changed.emit(Levels.keys()[current_level])
+	
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("one"):
