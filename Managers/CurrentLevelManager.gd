@@ -43,7 +43,6 @@ func change_current_level_to(new_level: Levels) -> void:
 	# Update state and emit signal
 	current_level = new_level
 	level_changed.emit(Levels.keys()[current_level])
-	
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("one"):

@@ -21,6 +21,7 @@ grow_vertical = 2
 
 [node name="Pong Panel" type="Panel" parent="CenterContainer"]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
@@ -73,6 +74,7 @@ grow_horizontal = 2
 
 [node name="Snake Panel" type="Panel" parent="CenterContainer Snek"]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(1920, 64)
 layout_mode = 2

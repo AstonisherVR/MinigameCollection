@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://j7hh6appmaoe"]
+
+[ext_resource type="PackedScene" uid="uid://cubxqm3g4yxp0" path="res://Player/Snake Player/snake_body_segment.tscn" id="1_rh5tg"]
+
+[sub_resource type="Curve" id="Curve_1g11x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_iib7e"]
+width = 32
+curve_x = SubResource("Curve_1g11x")
+
+[sub_resource type="Gradient" id="Gradient_fo18w"]
+offsets = PackedFloat32Array(0, 0.50193, 0.548263, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.943662, 0.943662, 0.943662, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qyus"]
+gradient = SubResource("Gradient_fo18w")
+width = 64
+
+[sub_resource type="Gradient" id="Gradient_cmpes"]
+offsets = PackedFloat32Array(0, 0.494208, 0.571429, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.945946, 0.945946, 0.945946, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p8pck"]
+gradient = SubResource("Gradient_cmpes")
+width = 64
+
+[node name="Snake Head Segment" instance=ExtResource("1_rh5tg")]
+
+[node name="Tonge" type="Sprite2D" parent="Body Sprite" index="0"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("CurveXYZTexture_iib7e")
+
+[node name="Eye 1" type="Sprite2D" parent="Body Sprite" index="1"]
+position = Vector2(-16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_4qyus")
+
+[node name="Eye 2" type="Sprite2D" parent="Body Sprite" index="2"]
+position = Vector2(16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_p8pck")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
