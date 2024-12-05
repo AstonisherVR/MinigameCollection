@@ -8,6 +8,8 @@
 
 [node name="Level Pong" type="Node2D"]
 
+[node name="Pong Level Manager" parent="." instance=ExtResource("4_k65th")]
+
 [node name="Ball Spawner" parent="." instance=ExtResource("1_6sxal")]
 unique_name_in_owner = true
 
@@ -15,8 +17,6 @@ unique_name_in_owner = true
 
 [node name="Player Spawner" parent="." instance=ExtResource("3_54x8b")]
 player_2_is_bot = true
-
-[node name="Pong Level Manager" parent="." instance=ExtResource("4_k65th")]
 
 [node name="UI" parent="." instance=ExtResource("4_y217b")]
 unique_name_in_owner = true

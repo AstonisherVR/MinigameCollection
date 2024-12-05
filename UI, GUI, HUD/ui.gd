@@ -15,7 +15,6 @@ func _ready() -> void:
 	if not CurrentLevelManager.level_changed.is_connected(_on_level_changed):
 		CurrentLevelManager.level_changed.connect(_on_level_changed)
 
-
 func _on_level_changed(level_name: String) -> void:
 	_initialize_corresponding_ui(level_name)
 
@@ -53,7 +52,7 @@ func _space_invaders_level_started() -> void:
 
 ## Resets the pong scores to zero
 func _reset_pong_scores() -> void:
-	for i in range(2):
+	for i: int in range(2):
 		update_pong_points(i, 0)  # Resets Player 1 and Player 2 scores to 0
 
 func _reset_snake_score() -> void:
@@ -64,7 +63,7 @@ func update_pong_points(pong_player_num: int, point_amount: int) -> void:
 		1: pong_player_1_score_label.text = "%d"%(point_amount) # Update Player 1's score
 		2: pong_player_2_score_label.text = "%d"%(point_amount) # Update Player 2's score
 
-func update_snake_points(point_amount) -> void:
+func update_snake_points(point_amount: int) -> void:
 	snake_score_label.text = "%d"%(point_amount) # Update Player 1's score
 
 func _on_game_over() -> void:

@@ -14,7 +14,7 @@ class_name Paddle
 var _current_ball: Ball						# Variable to store the current ball for the bot to track
 
 # Dictionary to store input mappings for both players
-var POSSIBLE_INPUTS: Dictionary = {
+const POSSIBLE_INPUTS: Dictionary = {
 	"up": "up",
 	"down": "down",
 	"player2_up": "ui_up",
@@ -24,7 +24,6 @@ var POSSIBLE_INPUTS: Dictionary = {
 # TODO In start menu let player choose wheter to play sgainst another player or player bot
 
 func _ready() -> void:
-
 	# Enable/disable ball detection based on if it's a bot
 	bot_area_collision.set_deferred("disabled", !is_bot)
 	if is_bot: is_player_2 = true
@@ -54,8 +53,8 @@ func _get_movement_direction() -> float:
 
 ## Handles player input for movement
 func _get_player_direction() -> float:
-	var up_action = POSSIBLE_INPUTS["player2_up" if is_player_2 else "up"]
-	var down_action = POSSIBLE_INPUTS["player2_down" if is_player_2 else "down"]
+	var up_action: String = POSSIBLE_INPUTS["player2_up" if is_player_2 else "up"]
+	var down_action: String = POSSIBLE_INPUTS["player2_down" if is_player_2 else "down"]
 	return Input.get_axis(up_action, down_action)
 
 ## Calculates bot movement based on ball position. Returns Bot movement direction

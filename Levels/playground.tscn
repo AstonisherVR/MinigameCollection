@@ -9,7 +9,7 @@
 metadata/_edit_lock_ = true
 
 [node name="Snake Player" parent="." instance=ExtResource("5_p23ty")]
-position = Vector2(952, 488)
+unique_name_in_owner = true
 
 [node name="Snake Level Manager" parent="." instance=ExtResource("1_kcfvf")]
 

@@ -7,11 +7,10 @@
 
 [node name="Level Snake" type="Node2D"]
 
+[node name="Snake Level Manager" parent="." instance=ExtResource("1_asxi0")]
+
 [node name="Snake Player" parent="." instance=ExtResource("3_v4wnp")]
 unique_name_in_owner = true
-position = Vector2(960, 576)
-
-[node name="Snake Level Manager" parent="." instance=ExtResource("1_asxi0")]
 
 [node name="Snake Fruit Spawner" parent="." instance=ExtResource("2_33iuy")]
 unique_name_in_owner = true

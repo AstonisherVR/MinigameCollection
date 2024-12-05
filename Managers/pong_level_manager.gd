@@ -16,8 +16,8 @@ func _ready() -> void:
 func _update_pong_score(which_player_scored: String) -> void:
 	var player_num: int = 1 if which_player_scored == "player_1_scored" else 2
 	players_scores[player_num] += 1
-	if ui: ui.update_pong_points(player_num, players_scores[player_num])
-	
-	# Check for game over condition (example: first to 10 points)
+	var coresponding_player_score: int = players_scores[player_num]
+	if ui: ui.update_pong_points(player_num, coresponding_player_score)
+	# Check for first 10 points
 	#if players_scores[player_num] >= 10:
 		#game_over.emit()

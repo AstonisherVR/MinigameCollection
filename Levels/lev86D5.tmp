@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://mx4voqpoa6iu"]
+
+[ext_resource type="PackedScene" uid="uid://0vtkxffto4eg" path="res://Pong Ball/ball_spawner.tscn" id="1_6sxal"]
+[ext_resource type="PackedScene" uid="uid://0ke7rqb1wal8" path="res://Pong Wall/wall_spawner.tscn" id="2_lvjpm"]
+[ext_resource type="PackedScene" uid="uid://chl4fw0avwcqs" path="res://Player/Pong Player/paddle_players_spawner.tscn" id="3_54x8b"]
+[ext_resource type="PackedScene" uid="uid://omgb3ew872e6" path="res://Managers/pong_level_manager.tscn" id="4_k65th"]
+[ext_resource type="PackedScene" uid="uid://c284njk6nhn1i" path="res://UI, GUI, HUD/ui.tscn" id="4_y217b"]
+
+[node name="Level Pong" type="Node2D"]
+
+[node name="Pong Level Manager" parent="." instance=ExtResource("4_k65th")]
+
+[node name="Ball Spawner" parent="." instance=ExtResource("1_6sxal")]
+unique_name_in_owner = true
+
+[node name="Wall Spawner" parent="." instance=ExtResource("2_lvjpm")]
+
+[node name="Player Spawner" parent="." instance=ExtResource("3_54x8b")]
+player_2_is_bot = true
+
+[node name="UI" parent="." instance=ExtResource("4_y217b")]
+unique_name_in_owner = true

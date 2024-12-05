@@ -4,10 +4,6 @@ extends Node
 
 ## Emitted when level changes. Passes the level name as a string.
 signal level_changed(level_name: String)
-## Emitted before level change begins
-#signal level_change_started
-## Emitted after level change is complete
-#signal level_change_completed
 
 enum Levels {
 	LEVEL_PLAYGROUND,
@@ -31,12 +27,12 @@ var level_scenes: Dictionary = {
 func change_current_level_to(new_level: Levels) -> void:
 	# Early returns for invalid cases
 	if current_level == new_level: return
-	var level_scene = level_scenes[new_level]
+	var level_scene: PackedScene = level_scenes[new_level]
 	if !level_scene: return
 	# Instance new scene
-	var new_level_instance = level_scene.instantiate()
+	var new_level_instance := level_scene.instantiate()
 	# Get the current scene for cleanup
-	var previous_scene = get_tree().current_scene
+	var previous_scene := get_tree().current_scene
 	# Add new scene to tree
 	get_tree().root.add_child(new_level_instance)
 	# Set as current scene BEFORE removing old scene

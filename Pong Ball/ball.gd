@@ -27,12 +27,12 @@ func _physics_process(delta: float) -> void:
 	_ball_movement(delta)
 
 # Moves the ball and handles bouncing off paddles and walls
-func _ball_movement(delta) -> void:
+func _ball_movement(delta: float) -> void:
 	# Try to move the ball and check if it hits anything
 	var collision := move_and_collide(direction * current_speed * delta) 
 	# If we hit something...
 	if collision:
-		var collider = collision.get_collider()
+		var collider: PhysicsBody2D = collision.get_collider()
 		# If we hit a paddle, speed up the ball and calculate new bounce direction based on where it hit the paddle
 		if collider.is_in_group("Paddles"):
 			current_speed = min(current_speed + acceleration_speed, max_speed)
@@ -41,22 +41,21 @@ func _ball_movement(delta) -> void:
 		else: direction = direction.bounce(collision.get_normal())
 
 # Figures out how the ball should bounce off a paddle
-func _calculate_bounce_direction(collider) -> Vector2:
+func _calculate_bounce_direction(collider: PhysicsBody2D) -> Vector2:
 	# Find where the ball hit the paddle
 	var ball_y_pos := position.y
 	var paddle_y_pos: float = collider.position.y
 	var distance := ball_y_pos - paddle_y_pos
 	var new_direction: Vector2
-	
 	# Reverse horizontal direction (if going right, now go left & vice versa)
 	new_direction.x = -sign(direction.x)
-	
 	# Calculate vertical bounce angle based on where ball hits the paddle:
 	# - Hit center = straight bounce
 	# - Hit top = bounce upward
 	# - Hit bottom = bounce downward
-	new_direction.y = (distance / (collider.get_node("CollisionShape2D").shape.extents.y)) * MAX_Y_VECTOR
-	
+	var collision_shape: CollisionShape2D = collider.get_node("CollisionShape2D")
+	var collision_shape_size := collision_shape.shape.get_rect().end
+	new_direction.y = (distance / (collision_shape_size.y)) * MAX_Y_VECTOR
 	return new_direction.normalized()  # Normalized to maintain consistent speed
 
 # Generates a random starting direction when ball spawns

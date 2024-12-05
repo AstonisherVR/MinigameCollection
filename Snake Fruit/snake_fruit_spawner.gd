@@ -16,13 +16,13 @@ func _ready() -> void:
 
 # This code spawns a fruit
 func _spawn_fuit() -> void:
-	var new_fruit = fruit_scenes.pick_random().instantiate() as BaseFruit
+	var new_fruit: PackedScene = fruit_scenes.pick_random()
+	var new_fruit_instance := new_fruit.instantiate() as BaseFruit
 	if new_fruit:
-		add_child(new_fruit)
-		new_fruit.fruit_eaten.connect(_on_fruit_eaten)
+		add_child(new_fruit_instance)
+		new_fruit_instance.fruit_eaten.connect(_on_fruit_eaten)
 		# TEMP
-		new_fruit.global_position = Vector2(randi_range(0, 528), randi_range(0, 400))
-
+		new_fruit_instance.global_position = Vector2(randi_range(0, 528), randi_range(0, 400))
 	else:
 		print_debug("Error: Failed to spawn fruit.")
 

@@ -2,7 +2,7 @@ extends Node
 ## Provides global utilities like screen size, over level data, input handling, and quit functionality.
 
 # This takes the current screen size and returns the value as Vector2
-@onready var screen_size = get_viewport().get_visible_rect().size
+@onready var screen_size := get_viewport().get_visible_rect().size
 
 # Every time an action happends, It checks if its esc and quits if so
 func _input(_event: InputEvent) -> void:
