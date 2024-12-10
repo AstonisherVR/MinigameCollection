@@ -16,7 +16,6 @@ unique_name_in_owner = true
 [node name="Wall Spawner" parent="." instance=ExtResource("2_lvjpm")]
 
 [node name="Player Spawner" parent="." instance=ExtResource("3_54x8b")]
-player_2_is_bot = true
 
 [node name="UI" parent="." instance=ExtResource("4_y217b")]
 unique_name_in_owner = true

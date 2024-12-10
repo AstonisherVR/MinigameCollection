@@ -5,17 +5,17 @@ class_name BallSpawner
 signal point_scored
 
 # Access to the ball scene
-const BALL_SCENE := preload("res://Pong Ball/ball.tscn")
+const BALL_SCENE: PackedScene = preload("res://Pong Ball/ball.tscn")
 
 @export_category("Ball Parameters")
 # Initial speed of the ball when spawned
-@export var initial_speed := 500.0
+@export var initial_speed: float = 500.0
 # Maximum speed the ball can possibly move at
-@export var max_speed := 1600.0 
+@export var max_speed: float = 1600.0
 # How much faster the ball gets each time it hits a paddle
-@export var acceleration_speed := 150.0
+@export var acceleration_speed: float = 150.0
 # The delay in which the ball spawns after a player scores
-@export var spawn_delay := 0.1
+@export var spawn_delay: float = 0.1
 # Quick access to the screens' center for the ball to spawn at
 @onready var _screen_center: Vector2 = GlobalManager.screen_size / 2
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 # This code spawns a ball
 func _spawn_ball() -> void:
-	var new_ball := BALL_SCENE.instantiate() as Ball
+	var new_ball: Ball = BALL_SCENE.instantiate() as Ball
 	if new_ball:
 		new_ball.initial_speed = initial_speed
 		new_ball.max_speed = max_speed

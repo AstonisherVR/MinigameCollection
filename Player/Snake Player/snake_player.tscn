@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cikkv5351d0cu"]
+[gd_scene load_steps=4 format=3 uid="uid://cikkv5351d0cu"]
 
 [ext_resource type="Script" path="res://Player/Snake Player/snake_player.gd" id="1_jnscj"]
+[ext_resource type="PackedScene" uid="uid://cubxqm3g4yxp0" path="res://Player/Snake Player/snake_head_segment.tscn" id="2_gfmqm"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r8x4v"]
 size = Vector2(32, 32)
@@ -17,14 +18,14 @@ texture = SubResource("PlaceholderTexture2D_r8x4v")
 
 [node name="Movement Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-process_callback = 0
 one_shot = true
 
-<<<<<<< Updated upstream
 [node name="Prediction Position Sprite Debuger" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 texture = SubResource("PlaceholderTexture2D_r8x4v")
 
-=======
->>>>>>> Stashed changes
+[node name="Snake Head Segment" parent="." instance=ExtResource("2_gfmqm")]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]

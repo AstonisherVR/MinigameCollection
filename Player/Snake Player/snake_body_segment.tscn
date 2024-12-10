@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://j7hh6appmaoe"]
+
+[ext_resource type="PackedScene" uid="uid://cubxqm3g4yxp0" path="res://Player/Snake Player/snake_head_segment.tscn" id="1_o0iry"]
+
+[node name="Snake Body Segment" groups=["Snake Body Part"] instance=ExtResource("1_o0iry")]
+z_index = 0
+collision_mask = 0
+
+[node name="Tonge" parent="Body Sprite" index="0"]
+visible = false
+
+[node name="Eye 1" parent="Body Sprite" index="1"]
+visible = false
+
+[node name="Eye 2" parent="Body Sprite" index="2"]
+visible = false

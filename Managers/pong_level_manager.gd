@@ -6,7 +6,7 @@ class_name PongLevelManager
 @onready var ui: UI = %UI
 
 # The current scores for Player 1 & Player 2
-var players_scores := {1: 0, 2: 0}
+var players_scores: Dictionary = {1: 0, 2: 0}
 
 func _ready() -> void:
 	#print("PongLevelManager initialized.")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cubxqm3g4yxp0"]
+
+[ext_resource type="Script" path="res://Player/Snake Player/snake_head_segment.gd" id="1_8q0d2"]
+
+[sub_resource type="Curve" id="Curve_tk2hl"]
+_data = [Vector2(0, 0), 0.0, 3.72514, 0, 0, Vector2(0.498182, 0.503536), 0.0, 0.0, 0, 0, Vector2(0.985455, 0), -3.7393, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_flus8"]
+bake_resolution = 10
+_data = [Vector2(0, 0.24611), 0.0, 2.7436, 0, 0, Vector2(0.508711, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24611), -2.75251, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_e3xep"]
+width = 64
+curve_x = SubResource("Curve_tk2hl")
+curve_y = SubResource("Curve_flus8")
+
+[sub_resource type="Curve" id="Curve_1g11x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_50lny"]
+width = 32
+curve_x = SubResource("Curve_1g11x")
+
+[sub_resource type="Gradient" id="Gradient_fo18w"]
+offsets = PackedFloat32Array(0, 0.50193, 0.548263, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.943662, 0.943662, 0.943662, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rp8hw"]
+gradient = SubResource("Gradient_fo18w")
+width = 64
+
+[sub_resource type="Gradient" id="Gradient_cmpes"]
+offsets = PackedFloat32Array(0, 0.494208, 0.571429, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.945946, 0.945946, 0.945946, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4folx"]
+gradient = SubResource("Gradient_cmpes")
+width = 64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfapr"]
+
+[node name="Snake Head Segment" type="Area2D"]
+z_index = 1
+collision_layer = 8
+collision_mask = 24
+script = ExtResource("1_8q0d2")
+
+[node name="Body Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1, 64)
+texture = SubResource("CurveXYZTexture_e3xep")
+
+[node name="Tonge" type="Sprite2D" parent="Body Sprite"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("CurveXYZTexture_50lny")
+
+[node name="Eye 1" type="Sprite2D" parent="Body Sprite"]
+position = Vector2(-16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_rp8hw")
+
+[node name="Eye 2" type="Sprite2D" parent="Body Sprite"]
+position = Vector2(16, -0.25)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture1D_4folx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qfapr")
+debug_color = Color(0.95, 0.38, 0.8645, 0.27451)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
