@@ -1,5 +1,5 @@
 extends Node
-## Manages transitions and states for all levels in the game. 
+## Manages transitions and states for all levels in the game.
 ## Used for switching between levels, handle global game events, and signal UI updates.
 
 ## Emitted when level changes. Passes the level name as a string.
@@ -30,9 +30,9 @@ func change_current_level_to(new_level: Levels) -> void:
 	var level_scene: PackedScene = level_scenes[new_level]
 	if !level_scene: return
 	# Instance new scene
-	var new_level_instance := level_scene.instantiate()
+	var new_level_instance: Node = level_scene.instantiate()
 	# Get the current scene for cleanup
-	var previous_scene := get_tree().current_scene
+	var previous_scene: Node = get_tree().current_scene
 	# Add new scene to tree
 	get_tree().root.add_child(new_level_instance)
 	# Set as current scene BEFORE removing old scene
@@ -45,13 +45,14 @@ func change_current_level_to(new_level: Levels) -> void:
 	level_changed.emit(Levels.keys()[current_level])
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("one"):
-		change_current_level_to(Levels.LEVEL_PONG)
-	if Input.is_action_just_released("two"):
-		change_current_level_to(Levels.LEVEL_SNAKE)
-	if Input.is_action_just_released("three"):
-		change_current_level_to(Levels.LEVEL_FLAPPY_BIRD)
-	if Input.is_action_just_released("four"):
-		change_current_level_to(Levels.LEVEL_PLAYGROUND)
-	#if Input.is_action_just_released("one"):
-		#change_current_level_to(Levels.LEVEL_PONG)
+	if OS.is_debug_build():
+		if Input.is_action_just_released("one"):
+			change_current_level_to(Levels.LEVEL_PONG)
+		elif Input.is_action_just_released("two"):
+			change_current_level_to(Levels.LEVEL_SNAKE)
+		elif Input.is_action_just_released("three"):
+			change_current_level_to(Levels.LEVEL_FLAPPY_BIRD)
+		elif Input.is_action_just_released("four"):
+			change_current_level_to(Levels.LEVEL_PLAYGROUND)
+		#elif Input.is_action_just_released("one"):
+			#change_current_level_to(Levels.LEVEL_PONG)

@@ -9,7 +9,7 @@ class_name SnakeLevelManager
 #@onready var snake_grid: TileMapLayer = %"Snake Grid"
 #@onready var grid_size = snake_grid.tile_set.tile_size
 
-var fruits_eaten := 0
+var fruits_eaten: int
 var game_stared: bool
 
 func _ready() -> void:

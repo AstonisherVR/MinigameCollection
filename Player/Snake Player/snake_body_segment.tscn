@@ -1,32 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cubxqm3g4yxp0"]
+[gd_scene load_steps=2 format=3 uid="uid://j7hh6appmaoe"]
 
-[ext_resource type="Script" path="res://Player/Snake Player/snake_body_segment.gd" id="1_ao41q"]
+[ext_resource type="PackedScene" uid="uid://cubxqm3g4yxp0" path="res://Player/Snake Player/snake_head_segment.tscn" id="1_o0iry"]
 
-[sub_resource type="Curve" id="Curve_tk2hl"]
-_data = [Vector2(0, 0), 0.0, 3.72514, 0, 0, Vector2(0.498182, 0.503536), 0.0, 0.0, 0, 0, Vector2(0.985455, 0), -3.7393, 0.0, 0, 0]
-point_count = 3
+[node name="Snake Body Segment" groups=["Snake Body Part"] instance=ExtResource("1_o0iry")]
+z_index = 0
+collision_mask = 0
 
-[sub_resource type="Curve" id="Curve_flus8"]
-bake_resolution = 10
-_data = [Vector2(0, 0.24611), 0.0, 2.7436, 0, 0, Vector2(0.508711, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.24611), -2.75251, 0.0, 0, 0]
-point_count = 3
+[node name="Tonge" parent="Body Sprite" index="0"]
+visible = false
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_e3xep"]
-width = 64
-curve_x = SubResource("Curve_tk2hl")
-curve_y = SubResource("Curve_flus8")
+[node name="Eye 1" parent="Body Sprite" index="1"]
+visible = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfapr"]
-
-[node name="Snake Body Segment" type="Area2D"]
-collision_layer = 8
-collision_mask = 16
-script = ExtResource("1_ao41q")
-
-[node name="Body Sprite" type="Sprite2D" parent="."]
-scale = Vector2(1, 64)
-texture = SubResource("CurveXYZTexture_e3xep")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_qfapr")
-debug_color = Color(0.95, 0.38, 0.8645, 0.27451)
+[node name="Eye 2" parent="Body Sprite" index="2"]
+visible = false

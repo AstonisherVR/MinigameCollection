@@ -1,8 +1,7 @@
 extends Line2D
 
-# This is the lenght of the trail 
-@export var length : = 10
-
+# This is the lenght of the trail
+@export var length: float = 10.0
 
 func _ready() -> void:
 	top_level = true

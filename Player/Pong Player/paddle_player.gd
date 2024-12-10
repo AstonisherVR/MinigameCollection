@@ -3,23 +3,22 @@ extends CharacterBody2D
 class_name Paddle
 
 @export_category("Paddle Parameters")
-@export var move_speed := 500.0				# How fast the paddle moves
-@export var is_player_2 := false			# If true, uses Player 2 controls
-@export var is_bot := false					# If true, paddle is AI controlled (And automatically Player 2)
-#Bot Specific Values 🡻						
-@export var bot_movement_threshold := 3.0	# Minimum distance before paddle moves. Also prevents jittering
-@export var bot_reaction_factor := 0.25		# How fast the bot reacts. Lower = faster bot reactions
+@export var move_speed: float = 500.0	# How fast the paddle moves
+@export var is_player_2: bool = false	# If true, uses Player 2 controls
+@export var is_bot: bool = false		# If true, paddle is AI controlled (And automatically Player 2)
+#Bot Specific Values 🡻
+@export var bot_movement_threshold: float = 3.0	# Minimum distance before paddle moves. Also prevents jittering
+@export var bot_reaction_factor: float = 0.25	# How fast the bot reacts. Lower = faster bot reactions
 @onready var bot_detection_area: Area2D = %BotDetectionArea2D # Reference to the detection area
 @onready var bot_area_collision: CollisionShape2D = bot_detection_area.get_child(0) # Reference to the detection's area collision shape
-var _current_ball: Ball						# Variable to store the current ball for the bot to track
+var current_ball: Ball					# Variable to store the current ball for the bot to track
 
 # Dictionary to store input mappings for both players
 const POSSIBLE_INPUTS: Dictionary = {
 	"up": "up",
 	"down": "down",
 	"player2_up": "ui_up",
-	"player2_down": "ui_down"
-}
+	"player2_down": "ui_down" }
 
 # TODO In start menu let player choose wheter to play sgainst another player or player bot
 
@@ -40,8 +39,8 @@ func _process(_delta: float) -> void:
 
 ## Updates which ball the bot is tracking
 func _update_ball_reference() -> void:
-	var balls := bot_detection_area.get_overlapping_bodies()
-	_current_ball = balls[0] if !balls.is_empty() else null
+	var balls: Array = bot_detection_area.get_overlapping_bodies()
+	current_ball = balls[0] if !balls.is_empty() else null
 
 ## Updates the vertical movement velocity of the players and bot
 func _update_movement() -> void:
@@ -59,11 +58,11 @@ func _get_player_direction() -> float:
 
 ## Calculates bot movement based on ball position. Returns Bot movement direction
 func _get_bot_direction() -> float:
-	var ball_pos := _get_ball_position()
-	var distance := ball_pos.y - position.y # The vertical distance between paddle and ball
+	var ball_pos: Vector2 = _get_ball_position()
+	var distance: float = ball_pos.y - position.y # The vertical distance between paddle and ball
 	return 0.0 if abs(distance) <= bot_movement_threshold else \
 		clamp(distance / (move_speed * bot_reaction_factor), -1.0, 1.0)
 
 ## Gets current ball position. If no ball is detected, return current paddle position to stay in place
 func _get_ball_position() -> Vector2:
-	return _current_ball.position if _current_ball != null else position
+	return current_ball.position if current_ball != null else position
