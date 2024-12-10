@@ -9,6 +9,13 @@ size = Vector2(32, 32)
 [node name="Snake Player" type="Node"]
 script = ExtResource("1_jnscj")
 
+[node name="Snake Head Segment" parent="." instance=ExtResource("2_gfmqm")]
+unique_name_in_owner = true
+
+[node name="Prediction Position Sprite Debuger" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("PlaceholderTexture2D_r8x4v")
+
 [node name="Movement Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
