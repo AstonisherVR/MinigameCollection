@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Minigame Collection"
-run/main_scene="res://Levels/level_snake.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="uid://mx4voqpoa6iu"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cugxiuix8hym7"]
 
-[ext_resource type="Script" path="res://Pong Ball/ball_trail.gd" id="1_pp3qg"]
+[ext_resource type="Script" uid="uid://cedfjdnlg4e5s" path="res://Pong Ball/ball_trail.gd" id="1_pp3qg"]
 
 [sub_resource type="Curve" id="Curve_ni00x"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0766667, 1), 0.0, -1.08303, 0, 1, Vector2(1, 0), -1.08303, 0.0, 1, 0]

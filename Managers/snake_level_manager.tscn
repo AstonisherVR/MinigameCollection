@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://dwfi46w70c7ky"]
 
-[ext_resource type="Script" path="res://Managers/snake_level_manager.gd" id="1_24qn6"]
+[ext_resource type="Script" uid="uid://clp7hy324gbnk" path="res://Managers/snake_level_manager.gd" id="1_24qn6"]
 [ext_resource type="Texture2D" uid="uid://b675lyce0ffwj" path="res://icon.svg" id="2_81v4n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cklyr"]
