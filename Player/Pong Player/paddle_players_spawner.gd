@@ -1,5 +1,4 @@
-extends Node
-class_name PlayerSpawner
+class_name PlayerSpawner extends Node
 
 const PADDLE_SCENE: PackedScene = preload("res://Player/Pong Player/paddle_player.tscn")
 const PLAYER_MARGIN: float = 15.0 # The distance from the screen edges
